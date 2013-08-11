@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Varios</title>
+	<script type="text/javascript" src="lib/angular.js"></script>
+	<script type="text/javascript" src="src/app.js"></script>
+	<style type="text/css">
+      .css-form input.ng-invalid.ng-dirty {
+        background-color: #FA787E;
+      }
+    
+      .css-form input.ng-valid.ng-dirty {
+        background-color: #78FA89;
+      }
+    </style>
+</head>
+<body>
+	<div ng-app="myApp">
+		
+		<div ng-controller="PrimerCtrl">
+			<input ng-model="data.mensaje"/>
+			<h1>{{reverseMensaje(data.mensaje)}}</h1>
+		</div>
+		
+		<hr>
+		<div ng-controller="SegundoCtrl">
+			<input ng-model="searchText"/>
+			<ul>
+<!-- 				<li ng-repeat="persona in personas.lista | orderBy:'name'"> -->
+				<li ng-repeat="persona in personas.lista | filter:searchText">
+<!-- 				<li ng-repeat="persona in personas.lista | limitTo:2"> -->
+					<span>{{persona.name | uppercase}}</span>
+				</li>
+			</ul>
+		</div>
+		
+		<hr>
+		<atencion></atencion>
+		
+		<hr>
+		<div ng-controller="OtroCtrl">
+			<form novalidate class="css-form">
+				Nombre: <input type="text" ng-model="user.name" required/><br>
+				Email:  <input type="email" ng-model="user.email" required/><br>
+				
+				<button ng-click="OtroCtrl.enviar()">Enviar</button>
+			</form>
+		</div>
+		
+		<hr>
+		<div>
+			{{'Pepe' | saludo}}
+		</div>
+		
+		
+	</div>
+</body>
+</html>
