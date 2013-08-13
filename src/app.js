@@ -65,4 +65,3 @@ myApp.filter('saludo', function() {
 		return 'Hola ' + texto + '!';
 	}
 });
-
